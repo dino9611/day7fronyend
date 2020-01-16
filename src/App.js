@@ -1,8 +1,20 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Axios from 'axios'
+import {APIURL} from './helper/apiurl'
 
 function App() {
+
+  useEffect(()=>{
+    Axios.get(`${APIURL}users`)
+    .then(res=>{
+      console.log(res.data)
+    }).catch(err=>{
+      console.log(err)
+    })
+  },[])
+
   return (
     <div className="App">
       <header className="App-header">
