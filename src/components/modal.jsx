@@ -2,6 +2,7 @@ import React from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
 const ModalExample = (props) => {
+  
   const {
     className,
     toggle,
@@ -21,7 +22,7 @@ const ModalExample = (props) => {
           {props.children}
         </ModalBody>
         <ModalFooter>
-          <Button color="primary" onClick={actionfunc}>Do Something</Button>
+          <Button color="primary" onClick={actionfunc}>Save</Button>
           <Button color="secondary" onClick={toggle}>Cancel</Button>
         </ModalFooter>
       </Modal>
