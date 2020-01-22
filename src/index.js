@@ -8,10 +8,18 @@ import './supports/fontawesome-free/css/all.css'
 import './supports/css/style.css'
 import * as serviceWorker from './serviceWorker';
 import {BrowserRouter} from 'react-router-dom'
+import {Provider} from 'react-redux'
+import reducers from './redux/reducers'
+import ReduxThunk from 'redux-thunk'
+import { createStore, applyMiddleware } from 'redux';
+const store=createStore(reducers,{},applyMiddleware(ReduxThunk))
+
 ReactDOM.render(
-<BrowserRouter>
-    <App />
-</BrowserRouter>   
+    <Provider store={store}>
+        <BrowserRouter>
+            <App />
+        </BrowserRouter>   
+    </Provider>
     , document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change

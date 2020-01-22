@@ -44,7 +44,7 @@ function ManageAdmin() {
 
   useEffect(()=>{
     console.log('didmount')
-    Axios.get(`${APIURL}user/users`)
+    Axios.get(`${APIURL}user/users?`)
     .then(res=>{
       console.log(res.data)
       setdatausers(res.data.datauser)

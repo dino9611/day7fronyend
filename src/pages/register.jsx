@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
-// import { connect } from 'react-redux';
-// import { onUserRegister } from './../redux/actions';
+import { connect } from 'react-redux';
+import { onUserRegister } from './../redux/actions';
 
 class Register extends Component {
     onBtnRegisterClick = () => {
@@ -13,20 +13,20 @@ class Register extends Component {
     }
 
     renderError = () => {
-        // if(this.props.error.length > 0) {
-            // return <p className="alert alert-danger">{this.props.error}</p>;
-        // }
+        if(this.props.error.length > 0) {
+            return <p className="alert alert-danger">{this.props.error}</p>;
+        }
     }
 
     renderButton = () => {
-        // if(this.props.loading) {
-        //     return <i className="fa fa-spinner fa-spin" style={{ fontSize: '54px' }}/>
-        // }
+        if(this.props.loading) {
+            return <i className="fa fa-spinner fa-spin" style={{ fontSize: '54px' }}/>
+        }
         return <input type="button" name="submit" id="submit" className="submit" defaultValue="Register" onClick={this.onBtnRegisterClick} />
     }
 
     render() {
-        // if(this.props.username === '') {
+        if(this.props.username === '') {
             return (
                 <div className="bodyRegister">
                     <div className="main">
@@ -50,14 +50,18 @@ class Register extends Component {
                     </div>
                 </div>
             )
-        // }
+        }
         
-        // return <Redirect to='/waitingverification' />
+        return <Redirect to='/' />
     }
 }
 
 const mapStateToProps = (state) => {
-    return { username: state.auth.username, loading: state.auth.loading, error: state.auth.error };
+    return { 
+        username: state.auth.username,
+        loading: state.auth.loading,
+        error: state.auth.error 
+    };
 }
 
-export default Register;
+export default connect(mapStateToProps,{onUserRegister})(Register);
