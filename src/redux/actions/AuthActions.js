@@ -55,33 +55,33 @@ export const onUserRegister = ({ username, email, password }) => {
 //         })
 //     }
 // }
-// export const onUserlogin = ({ username, password }) => {
-//     return (dispatch) => {
-//         dispatch({ type: AUTH_LOADING })
-//         if(username === ''  || password === '') {
-//             dispatch({ type: AUTH_SYSTEM_ERROR, payload: 'Semua form diatas wajib diisi!' })
-//         }
-//         else {
-//             axios.post(API_URL+'/user/login', {
-//                 username, password
-//             }).then((res) => {
-//                 console.log(res)
-//                 if(res.data.status!=='error'){
-//                     console.log(res.data.token)
-//                     localStorage.setItem('token',res.data.token)
+export const onUserlogin = ({ username, password }) => {
+    return (dispatch) => {
+        dispatch({ type: AUTH_LOADING })
+        if(username === ''  || password === '') {
+            dispatch({ type: AUTH_SYSTEM_ERROR, payload: {error:'Semua form diatas wajib diisi!'} })
+        }
+        else {
+            axios.post(API_URL+'/user/login', {
+                username, password
+            }).then((res) => {
+                console.log(res)
+                if(res.data.status!=='error'){
+                    console.log(res.data.token)
+                    localStorage.setItem('token',res.data.token)
                     
-//                     dispatch({ type : USER_LOGIN_SUCCESS, payload: res.data })
-//                 }else{
-//                     dispatch({ type: AUTH_SYSTEM_ERROR, payload: res.data })
-//                 }
+                    dispatch({ type : USER_LOGIN_SUCCESS, payload: res.data })
+                }else{
+                    dispatch({ type: AUTH_SYSTEM_ERROR, payload: res.data })
+                }
 
-//             }).catch((err) => {
-//                 console.log(err);
-//                 dispatch({ type: AUTH_SYSTEM_ERROR, payload: 'System Error' })
-//             })        
-//         }
-//     }
-// }
+            }).catch((err) => {
+                console.log(err);
+                dispatch({ type: AUTH_SYSTEM_ERROR, payload: 'System Error' })
+            })        
+        }
+    }
+}
 // export const onUserLogout=()=>{
 //     localStorage.removeItem('token')
 //     return{
