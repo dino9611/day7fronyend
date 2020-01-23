@@ -1,7 +1,7 @@
 import React from 'react';
 import Axios from 'axios'
 import queryString from 'query-string'
-import { API_URL } from '../supports';
+import { APIURL } from './../helper/apiurl';
 
 
 class Verified extends React.Component {
@@ -11,11 +11,12 @@ class Verified extends React.Component {
 
       }
     componentDidMount(){
+        console.log(this.props.location.search)
         var params=queryString.parse(this.props.location.search)
         console.log(params)
         var username=params.username
         var password=params.password
-        Axios.put(`${API_URL}/user/verifikasiemail`,{
+        Axios.put(`${APIURL}auth/verifikasiemail`,{
             username,password
         }).then((res)=>{
             console.log(res.data)

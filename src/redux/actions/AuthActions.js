@@ -11,7 +11,7 @@ export const onUserRegister = ({ username, email, password }) => {
     return (dispatch) => {
         dispatch({ type: AUTH_LOADING })
         if(username === '' || email === '' || password === '') {
-            dispatch({ type: AUTH_SYSTEM_ERROR, payload: 'Semua form diatas wajib diisi!' })
+            dispatch({ type: AUTH_SYSTEM_ERROR, payload: {error:'Semua form diatas wajib diisi!'} })
         }
         else {
             axios.post(APIURL+'auth/registerver', {
@@ -27,7 +27,7 @@ export const onUserRegister = ({ username, email, password }) => {
                 }
             }).catch((err) => {
                 console.log(err);
-                dispatch({ type: AUTH_SYSTEM_ERROR, payload: 'System Error' })
+                dispatch({ type: AUTH_SYSTEM_ERROR, payload: {error:'System Error'} })
             })        
         }
     }

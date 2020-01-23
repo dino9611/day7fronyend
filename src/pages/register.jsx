@@ -8,7 +8,7 @@ class Register extends Component {
         var username = this.refs.username.value;
         var email = this.refs.email.value;
         var password = this.refs.password.value;
-
+        // console.log(username)
         this.props.onUserRegister({ username, email, password });
     }
 
@@ -52,7 +52,7 @@ class Register extends Component {
             )
         }
         
-        return <Redirect to='/' />
+        return <Redirect to='/verified' />
     }
 }
 
