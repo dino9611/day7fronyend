@@ -62,14 +62,16 @@ export const onUserlogin = ({ username, password }) => {
             dispatch({ type: AUTH_SYSTEM_ERROR, payload: {error:'Semua form diatas wajib diisi!'} })
         }
         else {
-            axios.post(API_URL+'/user/login', {
-                username, password
+            axios.get(APIURL+'auth/login', {
+                params:{
+                    username, password
+                }
             }).then((res) => {
                 console.log(res)
                 if(res.data.status!=='error'){
                     console.log(res.data.token)
                     localStorage.setItem('token',res.data.token)
-                    
+                    localStorage.setItem('username',username)
                     dispatch({ type : USER_LOGIN_SUCCESS, payload: res.data })
                 }else{
                     dispatch({ type: AUTH_SYSTEM_ERROR, payload: res.data })

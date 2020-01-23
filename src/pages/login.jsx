@@ -56,8 +56,8 @@ class Login extends React.Component {
         
 }
 const mapStateToProps = (state) => {
-        return { username: state.auth.username, loading: state.auth.loading, error: state.auth.error };
-    }
+    return { username: state.auth.username, loading: state.auth.loading, error: state.auth.error };
+}
             
         
  

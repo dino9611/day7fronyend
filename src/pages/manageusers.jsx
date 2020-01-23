@@ -139,10 +139,12 @@ function ManageAdmin() {
       password:'rahasia',
       email:email.current.value,
     }
+    const token=localStorage.getItem('token')
     var Headers={
       headers:
       {
           'Content-Type':'multipart/form-data',
+          'Authorization':`Bearer ${token}`
       }
     }
     formdata.append('image',addimagefile.addImageFile)

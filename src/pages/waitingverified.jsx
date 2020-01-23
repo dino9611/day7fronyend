@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import Axios from 'axios'
 import {connect} from 'react-redux'
-import { API_URL } from '../supports';
+import { APIURL } from '../helper/apiurl';
 
 class WaitingVerification extends Component {
     onBtnResendEmailClick=()=>{
-        Axios.post(`${API_URL}/user/resendemailver`,{
+        Axios.post(`${APIURL}/user/resendemailver`,{
             username:this.props.username,
             email:this.props.email
         }).then((res)=>{
