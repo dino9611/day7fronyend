@@ -65,7 +65,7 @@ export const onUserlogin = ({ username, password }) => {
             axios.get(APIURL+'auth/login', {
                 params:{
                     username, password
-                }
+                },
             }).then((res) => {
                 console.log(res)
                 if(res.data.status!=='error'){
